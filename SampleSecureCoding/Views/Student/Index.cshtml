@@ -1,0 +1,17 @@
+﻿@model IEnumerable<SampleSecureCoding.Models.Student>
+
+<h2>Student</h2>
+
+<table class="table table-striped">
+    <tr>
+        <td>NIM</td>
+        <td>FullName</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.NIM</td>
+            <td>@item.FullName</td>
+        </tr>
+    }
+</table>
