@@ -125,3 +125,5 @@ D:\Kuliah\KTI_VSCODE\SampleSecureCoding\bin\Debug\net8.0\runtimes\win-x64\native
 D:\Kuliah\KTI_VSCODE\SampleSecureCoding\bin\Debug\net8.0\runtimes\win-x86\native\e_sqlite3.dll
 D:\Kuliah\KTI_VSCODE\SampleSecureCoding\obj\Debug\net8.0\SampleSecureCoding.csproj.AssemblyReference.cache
 D:\Kuliah\KTI_VSCODE\SampleSecureCoding\obj\Debug\net8.0\SampleSe.7EA4732F.Up2Date
+D:\Kuliah\KTI_VSCODE\SampleSecureCoding\obj\Debug\net8.0\SampleSecureCoding.sourcelink.json
+D:\Kuliah\KTI_VSCODE\SampleSecureCoding\bin\Debug\net8.0\BCrypt.Net-Next.dll
