@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SampleSecureCoding")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4725933c9fce838994b8344beb9c0583b8aeb1dd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("SampleSecureCoding")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SampleSecureCoding")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
