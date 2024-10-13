@@ -34,11 +34,26 @@ public class UserData : IUser
             user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
             _db.Users.Add(user);
             _db.SaveChanges();
-            return user;     
+            return user;
         }
         catch (Exception ex)
         {
             throw new Exception(ex.Message);
         }
     }
+
+    public void UpdateUserPassword(User user)
+    {
+        var existingUser = _db.Users.FirstOrDefault(u => u.Username == user.Username);
+        if (existingUser != null)
+        {
+            existingUser.Password = user.Password; // New hashed password
+            _db.SaveChanges();
+        }
+        else
+        {
+            throw new Exception("User not found");
+        }
+    }
+
 }

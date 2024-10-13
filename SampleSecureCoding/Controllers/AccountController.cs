@@ -1,6 +1,7 @@
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SampleSecureCoding.Data;
 using SampleSecureCoding.Models;
@@ -27,7 +28,7 @@ namespace SampleSecureCoding.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(RegistrationViewModel registartionViewModel)
+        public ActionResult Register(RegistrationViewModel registrationViewModel)
         {
             try
             {
@@ -35,8 +36,8 @@ namespace SampleSecureCoding.Controllers
                {
                     var user = new Models.User
                     {
-                        Username = registartionViewModel.Username,
-                        Password = registartionViewModel.Password,
+                        Username = registrationViewModel.Username,
+                        Password = registrationViewModel.Password,
                         RoleName = "contributor"
                     };
                      _userData.Registration(user);
@@ -47,7 +48,7 @@ namespace SampleSecureCoding.Controllers
             {
                 ViewBag.Error = ex.Message;
             }
-            return View(registartionViewModel);
+            return View(registrationViewModel);
         }
 
         public ActionResult Login()
@@ -93,6 +94,32 @@ namespace SampleSecureCoding.Controllers
                 ViewBag.Massage = ex.Message;
             }
             return View(loginViewModel);
+        }
+        [Authorize]
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult ChangePassword(ChangePasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+
+                var user = _userData.Login(new User { Username = User.Identity.Name, Password = model.CurrentPassword });
+                
+                if (user != null)
+                {
+                    user.Password = BCrypt.Net.BCrypt.HashPassword(model.NewPassword);
+                    _userData.UpdateUserPassword(user);
+                    return RedirectToAction("Index", "Home");
+                }
+
+                ModelState.AddModelError(string.Empty, "Password sekarang tidak sesuai.");
+            }
+            return View(model);
         }
     }
 }
